@@ -2,7 +2,7 @@
 const pg = require('pg');
 const Pool = pg.Pool;
 const config = {
-    host: 'Local', 
+    host: 'Localhost', 
     database: 'weekend-to-do-app'  
 };
 
