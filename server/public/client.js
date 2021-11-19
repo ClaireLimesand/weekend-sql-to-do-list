@@ -18,6 +18,7 @@ function addTask() {
         console.log('POST /tasks succeeded')
         $('#taskInput').val(''),
         $('#detailsInput').val(''),
+        $('#taskList').on('click', '.deleteButton', deleteTask);
         renderTasks()
     });
 }
@@ -27,15 +28,28 @@ function renderTasks() {
         type: 'GET',
         url: '/tasks'
     }).then((response) => {
-        $("#songsTableBody").empty();
+        $("#taskList").empty();
         console.log("GET /songs response", response);
         for (let object of response) {
-        $('#addTask').append(`
+        $('#taskList').append(`
         <tr>
             <td>${object.task}</td>
             <td>${object.details}</td>
+            <td><button class="deleteButton" data-id="${object.id}">Delete Task</button></td>
         </tr>
         `);
         }
     });
 }
+
+function deleteTask() {
+    console.log('in Delete')
+    const taskIdToDelete = $(this).data('id');
+    $.ajax({
+        type: 'DELETE',
+        url: `/tasks/${taskIdToDelete}`
+    }).then((response) => {
+        console.log(response);
+        renderTasks();
+    })
+};
