@@ -27,6 +27,17 @@ router.post('/', (req, res) => {
     });
 });
 
-
+router.get( '/', (req, res) => {
+    console.log('in GET');
+    const sqlText = 'SELECT * FROM "checklist" ORDER BY "task" DESC;';
+    pool.query( sqlText )
+        .then( dbResult => {
+        console.log(`${dbResult.rows.length} rows to send.`)
+        res.send(dbResult.rows );
+    }).catch( dbErr => {
+        console.error(dbErr);
+        res.sendStatus( 500 );
+    });
+});
 
 module.exports = router;

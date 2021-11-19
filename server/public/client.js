@@ -18,24 +18,24 @@ function addTask() {
         console.log('POST /tasks succeeded')
         $('#taskInput').val(''),
         $('#detailsInput').val(''),
-        console.log('howdy')
+        renderTasks()
     });
 }
 
-// function renderTasks() {
-//     $.ajax({
-//         type: 'GET',
-//         url: '/tasks'
-//     }).then((response) => {
-//         $("#songsTableBody").empty();
-//         console.log("GET /songs response", response);
-//         for (let object of response) {
-//         $('#addTask').append(`
-//         <tr>
-//             <td>${object.task}</td>
-//             <td>${object.details}</td>
-//         </tr>
-//         `);
-//         }
-//     });
-// }
+function renderTasks() {
+    $.ajax({
+        type: 'GET',
+        url: '/tasks'
+    }).then((response) => {
+        $("#songsTableBody").empty();
+        console.log("GET /songs response", response);
+        for (let object of response) {
+        $('#addTask').append(`
+        <tr>
+            <td>${object.task}</td>
+            <td>${object.details}</td>
+        </tr>
+        `);
+        }
+    });
+}
