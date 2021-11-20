@@ -3,6 +3,9 @@ $(document).ready(onReady);
 function onReady() {
     console.log('jquery working')
     $('#addButton').on('click', addTask);
+    $('#taskList').on('click', '.deleteButton', deleteTask);
+    $('#taskList').on('click', '.completeBox', completeTask);
+    renderTasks()
 }
 
 function addTask() {
@@ -18,7 +21,7 @@ function addTask() {
         console.log('POST /tasks succeeded')
         $('#taskInput').val(''),
         $('#detailsInput').val(''),
-        $('#taskList').on('click', '.deleteButton', deleteTask);
+        // $('#taskList').on('click', '.deleteButton', deleteTask);
         renderTasks()
     });
 }
@@ -35,6 +38,8 @@ function renderTasks() {
         <tr>
             <td>${object.task}</td>
             <td>${object.details}</td>
+            <input type="checkbox">
+            <td><input type="checkbox" class="completeBox" data-id="${object.id}" data-status="${object.status}"></td>
             <td><button class="deleteButton" data-id="${object.id}">Delete Task</button></td>
         </tr>
         `);
@@ -53,3 +58,21 @@ function deleteTask() {
         renderTasks();
     })
 };
+
+function completeTask() {
+    console.log('tashi delek')
+    const taskToComplete = $(this).data('id');
+    const completeStatus = $(this).data('status');
+
+    console.log('taskToComplete', taskToComplete);
+    console.log('completeStatus', completeStatus);
+    $.ajax({
+        type: 'PUT',
+        url: `/tasks/${taskToComplete}`,
+        data: { status: completeStatus }
+    }).then((res) => {
+        renderTasks();
+    }).catch((err) => {
+        console.error(err);
+    })
+}
