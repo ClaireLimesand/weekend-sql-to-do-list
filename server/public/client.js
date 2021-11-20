@@ -21,7 +21,6 @@ function addTask() {
         console.log('POST /tasks succeeded')
         $('#taskInput').val(''),
         $('#detailsInput').val(''),
-        // $('#taskList').on('click', '.deleteButton', deleteTask);
         renderTasks()
     });
 }
@@ -35,12 +34,11 @@ function renderTasks() {
         console.log("GET /songs response", response);
         for (let object of response) {
         $('#taskList').append(`
-        <tr>
+        <tr class="newRow">
             <td>${object.task}</td>
             <td>${object.details}</td>
-            <input type="checkbox">
             <td><input type="checkbox" class="completeBox" data-id="${object.id}" data-status="${object.status}"></td>
-            <td><button class="deleteButton" data-id="${object.id}">Delete Task</button></td>
+            <td><button class="deleteButton" data-id="${object.id}">delete</button></td>
         </tr>
         `);
         }
@@ -75,4 +73,4 @@ function completeTask() {
     }).catch((err) => {
         console.error(err);
     })
-}
+};
