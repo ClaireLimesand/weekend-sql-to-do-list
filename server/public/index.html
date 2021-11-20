@@ -10,28 +10,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h3>Add A New To-Do Task</h1>
-    <div id="addTask">
-        <label for="task">Task</label>
+    <h1>to-do</h1>
+    <div id="addTask" class="center">
+        <label for="task">task</label>
         <input type="text" id="taskInput"/>
 
-        <label for="details">Details</label>
+        <label for="details">details</label>
         <input type="text" id="detailsInput"/>
 
-        <button id="addButton">Add Task</button>
+        <button id="addButton">add task</button>
     </div>
-    <section>
-        <h2>Your To-Do List</h2>
-        <table>
+    <div>
+        <h3>your list:</h2>
+        <table class="center">
             <thead>
                 <tr>
-                    <th>Task</th>
-                    <th>Details</th>
+                    <th>task</th>
+                    <th>details</th>
+                    <th>all done</th>
+                    <th></th>
                 </tr>
         </thead>
         <tbody id="taskList">
         </tbody>
         </table>
-    </section>
+    </div>
 </body>
 </html>

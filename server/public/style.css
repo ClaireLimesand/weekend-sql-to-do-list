@@ -1,13 +1,67 @@
-*{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #006450;
+    font-size: medium;
 }
 
-body{
-    background-color: cadetblue;
+h1, h3 {
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 	1.5rem;
+}
+
+body {
+    background-color: #f8f0e3;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1150px;
 }
 
 table, th, td {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    text-align: left;
     border-collapse: collapse;
     padding: .5em;
 }
+
+tbody tr:nth-child(odd){
+    background-color: #bfcac5;
+}
+
+/* tbody tr:nth-child(even){
+    background-color: 
+} */
+
+label {
+    font-size: large;
+}
+
+input {
+    border: 4px solid #006450; padding: 5px; 
+    background-color: #f8f0e3;
+    border-radius:20px;
+}
+
+button {
+    border: 4px solid #006450; padding: 5px; 
+    background-color: #006450;
+    border-radius:20px;
+    color: #f8f0e3;;
+}
+
+.turnOrange {
+    background-color: orange;
+}
+
+#detailsInput { 
+    width: 50%; border: 4px solid #006450; padding: 5px; 
+}
+
+#taskInput { 
+    width: 27%; border: 4px solid #006450; padding: 5px; 
+}
+
+
