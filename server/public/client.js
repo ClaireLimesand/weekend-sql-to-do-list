@@ -32,18 +32,41 @@ function renderTasks() {
     }).then((response) => {
         $("#taskList").empty();
         console.log("GET /songs response", response);
-        for (let object of response) {
+        for (let object of response) { 
+        if ( object.status === true ){
+            console.log('hello')
+        }
         $('#taskList').append(`
         <tr class="newRow">
             <td>${object.task}</td>
             <td>${object.details}</td>
-            <td><input type="checkbox" class="completeBox" data-id="${object.id}" data-status="${object.status}"></td>
+            <td><button class="completeBox" data-id="${object.id}" data-status="${object.status}">task complete</button</td>
             <td><button class="deleteButton" data-id="${object.id}">delete</button></td>
         </tr>
         `);
         }
     });
 }
+
+// function renderTasks() {
+//     $.ajax({
+//         type: 'GET',
+//         url: '/tasks'
+//     }).then((response) => {
+//         $("#taskList").empty();
+//         console.log("GET /songs response", response);
+//         for (let object of response) {
+//         $('#taskList').append(`
+//         <tr class="newRow">
+//             <td>${object.task}</td>
+//             <td>${object.details}</td>
+//             <td><button class="completeBox" data-id="${object.id}" data-status="${object.status}">task complete</button</td>
+//             <td><button class="deleteButton" data-id="${object.id}">delete</button></td>
+//         </tr>
+//         `);
+//         }
+//     });
+// }
 
 function deleteTask() {
     console.log('in Delete')
@@ -61,7 +84,6 @@ function completeTask() {
     console.log('tashi delek')
     const taskToComplete = $(this).data('id');
     const completeStatus = $(this).data('status');
-
     console.log('taskToComplete', taskToComplete);
     console.log('completeStatus', completeStatus);
     $.ajax({
@@ -74,3 +96,4 @@ function completeTask() {
         console.error(err);
     })
 };
+
