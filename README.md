@@ -6,8 +6,6 @@ Duration: weekend sprint
 
 This is a to-do list. A user inputs a task and it's description which is then displayed onto the DOM. A user can delete the task to remove it from the database or complete the task which will update it's status in the database and be reflected onto the DOM. 
 
-![alt text](screenshot/screenshot.png "Image of the DOM")
-
 ## Prerequesites
 
 None
