@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
 
 router.get( '/', (req, res) => {
     console.log('in GET');
-    const sqlText = 'SELECT * FROM "checklist" ORDER BY "task" DESC;';
+    const sqlText = 'SELECT * FROM "checklist" ORDER BY "id" ASC;';
     pool.query( sqlText )
         .then( dbResult => {
         console.log(`${dbResult.rows.length} rows to send.`)

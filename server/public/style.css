@@ -20,8 +20,14 @@ body {
     width: 1150px;
 }
 
-table, th, td {
+table, td {
     /* border: 1px solid black; */
+    text-align: left;
+    border-collapse: collapse;
+    padding: .5em;
+}
+
+th {
     text-align: left;
     border-collapse: collapse;
     padding: .5em;
@@ -52,8 +58,9 @@ button {
     color: #f8f0e3;;
 }
 
-.turnOrange {
+.selected {
     background-color: orange;
+    text-decoration: line-through
 }
 
 #detailsInput { 
