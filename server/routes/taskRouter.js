@@ -2,8 +2,8 @@ const pool = require('../modules/pool.js');
 const express = require('express');
 const router = express.Router();
 
+// this reveives the input values from client.js and inserts them into the database
 router.post('/', (req, res) => {
-    console.log('POST /tasks');
     console.log('req.body:', req.body);
     const newTask = req.body;
     const sqlText = `
@@ -27,6 +27,7 @@ router.post('/', (req, res) => {
     });
 });
 
+// this sends our database back to client.js it orders them by ID to display on the DOM 
 router.get( '/', (req, res) => {
     console.log('in GET');
     const sqlText = 'SELECT * FROM "checklist" ORDER BY "id" ASC;';
@@ -40,6 +41,7 @@ router.get( '/', (req, res) => {
     });
 });
 
+// this deletes and item from our database using it's unique ID 
 router.delete('/:id', (req, res) => {
     console.log('DELETE /songs/:id');
     console.log('req.params:', req.params);
@@ -60,6 +62,8 @@ router.delete('/:id', (req, res) => {
     })
 });
 
+// this sets our taskToUpdate as the received item's unique ID. It changes the database status from false ]
+// (which is set as default) to true. 
 router.put('/:id', (req, res) => {
     console.log('req.params', req.params);
     console.log('req.body', req.body);

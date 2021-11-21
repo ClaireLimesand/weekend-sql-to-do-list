@@ -1,5 +1,6 @@
 $(document).ready(onReady);
 
+// set up click handlers & render any tasks in the database onto the DOM
 function onReady() {
     console.log('jquery working')
     $('#addButton').on('click', addTask);
@@ -8,6 +9,7 @@ function onReady() {
     renderTasks()
 }
 
+// set up POST request to send the value of our input fields to the server, then run renderTasks
 function addTask() {
     const newTask = {
         task: $('#taskInput').val(),
@@ -25,6 +27,8 @@ function addTask() {
     });
 }
 
+// GET request that loops through our tasks and appends them to the dom
+// if the task's completion status is true the button's text will change from "complete task" to "awesome, you did it!"
 function renderTasks() {
     $.ajax({
         type: 'GET',
@@ -56,6 +60,8 @@ function renderTasks() {
     });
 }
 
+// this function targets the item clicked using it's ID and sends that to the server
+// it then rerenders the DOM
 function deleteTask() {
     console.log('in Delete')
     const taskIdToDelete = $(this).data('id');
@@ -68,6 +74,8 @@ function deleteTask() {
     })
 };
 
+// this is a PUT request to change the database 'status' of the item from false to true
+// it then rerenders the DOM so the user knows about the change
 function completeTask() {
     console.log('tashi delek')
     const taskToComplete = $(this).data('id');
