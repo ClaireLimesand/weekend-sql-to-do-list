@@ -34,39 +34,27 @@ function renderTasks() {
         console.log("GET /songs response", response);
         for (let object of response) { 
         if ( object.status === true ){
-            console.log('hello')
+            $('#taskList').append(`
+            <tr class="newRow">
+                <td>${object.task}</td>
+                <td>${object.details}</td>
+                <td><button class="completeBox" data-id="${object.id}" data-status="${object.status}">awesome, you did it!</button</td>
+                <td><button class="deleteButton" data-id="${object.id}">delete</button></td>
+            </tr>
+            `);
+        } else {
+            $('#taskList').append(`
+            <tr class="newRow">
+                <td>${object.task}</td>
+                <td>${object.details}</td>
+                <td><button class="completeBox" data-id="${object.id}" data-status="${object.status}">complete task</button</td>
+                <td><button class="deleteButton" data-id="${object.id}">delete</button></td>
+            </tr>
+            `);
         }
-        $('#taskList').append(`
-        <tr class="newRow">
-            <td>${object.task}</td>
-            <td>${object.details}</td>
-            <td><button class="completeBox" data-id="${object.id}" data-status="${object.status}">task complete</button</td>
-            <td><button class="deleteButton" data-id="${object.id}">delete</button></td>
-        </tr>
-        `);
         }
     });
 }
-
-// function renderTasks() {
-//     $.ajax({
-//         type: 'GET',
-//         url: '/tasks'
-//     }).then((response) => {
-//         $("#taskList").empty();
-//         console.log("GET /songs response", response);
-//         for (let object of response) {
-//         $('#taskList').append(`
-//         <tr class="newRow">
-//             <td>${object.task}</td>
-//             <td>${object.details}</td>
-//             <td><button class="completeBox" data-id="${object.id}" data-status="${object.status}">task complete</button</td>
-//             <td><button class="deleteButton" data-id="${object.id}">delete</button></td>
-//         </tr>
-//         `);
-//         }
-//     });
-// }
 
 function deleteTask() {
     console.log('in Delete')

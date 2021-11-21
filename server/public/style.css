@@ -6,7 +6,7 @@
 
 h1, h3 {
     text-align: center;
-    letter-spacing: 2px;
+    letter-spacing: 1.25px;
     font-size: 	1.5rem;
 }
 
@@ -37,12 +37,13 @@ tbody tr:nth-child(odd){
     background-color: #bfcac5;
 }
 
-/* tbody tr:nth-child(even){
-    background-color: 
-} */
-
 label {
     font-size: large;
+}
+
+.completeBox {
+    margin:auto;
+    display:block;
 }
 
 input {
